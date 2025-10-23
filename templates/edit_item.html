@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Tarea - Sistema de Tareas{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <div class="form-card">
+        <h2>Editar Tarea</h2>
+        <form method="POST" action="{{ url_for('edit_task', task_id=task.id) }}">
+            <div class="form-group">
+                <label for="title">Título *</label>
+                <input type="text" id="title" name="title" value="{{ task.title }}" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Descripción</label>
+                <textarea id="description" name="description" rows="4">{{ task.description or '' }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="category">Categoría</label>
+                <select id="category" name="category">
+                    <option value="">Seleccionar categoría</option>
+                    <option value="trabajo" {% if task.category == 'trabajo' %}selected{% endif %}>Trabajo</option>
+                    <option value="personal" {% if task.category == 'personal' %}selected{% endif %}>Personal</option>
+                    <option value="estudio" {% if task.category == 'estudio' %}selected{% endif %}>Estudio</option>
+                    <option value="otros" {% if task.category == 'otros' %}selected{% endif %}>Otros</option>
+                </select>
+            </div>
+            <div class="form-actions">
+                <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Cancelar</a>
+                <button type="submit" class="btn btn-primary">Actualizar Tarea</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

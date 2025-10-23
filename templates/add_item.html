@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Nueva Tarea - Sistema de Tareas{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <div class="form-card">
+        <h2>Nueva Tarea</h2>
+        <form method="POST" action="{{ url_for('add_task') }}">
+            <div class="form-group">
+                <label for="title">Título *</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Descripción</label>
+                <textarea id="description" name="description" rows="4" placeholder="Describe tu tarea..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="category">Categoría</label>
+                <select id="category" name="category">
+                    <option value="">Seleccionar categoría</option>
+                    <option value="trabajo">Trabajo</option>
+                    <option value="personal">Personal</option>
+                    <option value="estudio">Estudio</option>
+                    <option value="otros">Otros</option>
+                </select>
+            </div>
+            <div class="form-actions">
+                <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Cancelar</a>
+                <button type="submit" class="btn btn-primary">Guardar Tarea</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
