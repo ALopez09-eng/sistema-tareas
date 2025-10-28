@@ -5,6 +5,7 @@ import os
 from datetime import datetime
 import re
 
+# Hola Yo estoy aquí :
 app = Flask(__name__)
 app.secret_key = 'tu-clave-secreta-aqui'  # Cambia por una clave fija para desarrollo
 app.config['DATABASE'] = 'database/app.db'
